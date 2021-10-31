@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Список кредитов</title>
+</head>
+<body>
+<div th:insert="~{fragment/top :: copy}"></div>
+<main class="container">
+  <h1>Список кредитов: </h1>
+  <p class="lead">
+    <a href="/credit/new" class="btn btn-sm btn-secondary fw-bold border-light bg-dark">Добавить новый кредит</a>
+  </p>
+  <div  class="bg-light p-1 rounded">
+    <table  class="table table-striped table-sm">
+      <thead>
+      <tr>
+        <th scope="col">Лимит</th>
+        <th scope="col">Процент</th>
+        <th scope="col"></tr>
+      </thead>
+      <tbody>
+      <tr th:each="credit : ${credit}">
+        <td><a th:text="${credit.getCreditLimit()}">user</a> </td>
+        <td><a th:text="${credit.getCreditPercent()}">user</a> </td>
+        <td><a th:href="@{/credit/{id}(id=${credit.getId()})}" class="btn badge badge-info bg-dark" >Info</a></td>
+      </tr>
+      </tbody>
+    </table>
+<br/>
+<hr/>
+</div>
+</main>
+</body>
+</html>

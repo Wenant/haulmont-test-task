@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Кредит</title>
+</head>
+<body>
+<div th:insert="~{fragment/top :: copy}"></div>
+<main class="container">
+  <div  class="bg-light p-1 rounded">
+
+
+<form th:method="PATCH" th:action="@{/credit/{id}(id=${credit.getId()})}" th:object="${credit}">
+  <label for="creditLimit">Новый лимит: </label>
+  <input type="text" th:field="*{creditLimit}" id="creditLimit"/>
+  <div style="color:red" th:if="${#fields.hasErrors('creditLimit')}" th:errors="*{creditLimit}">Error</div>
+  <br/>
+  <label for="creditPercent">Новый процент: </label>
+  <input type="text" th:field="*{creditPercent}" id="creditPercent"/>
+  <div style="color:red" th:if="${#fields.hasErrors('creditPercent')}" th:errors="*{creditPercent}">Error</div>
+  <br/>
+
+
+  <input type="submit" value="Обновить"/>
+</form>
+</div>
+</main>
+</body>
+</html>

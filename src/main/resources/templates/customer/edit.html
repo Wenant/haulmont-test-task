@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Клиент</title>
+</head>
+<body>
+<div th:insert="~{fragment/top :: copy}"></div>
+
+<main class="container">
+  <div  class="bg-light p-1 rounded">
+
+
+<form th:method="PATCH" th:action="@{/customer/{id}(id=${customer.getId()})}" th:object="${customer}">
+  <label for="name">Имя: </label>
+  <input type="text" th:field="*{name}" id="name"/>
+  <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</div>
+  <br/>
+  <label for="phone">Телефон : </label>
+  <input type="text" th:field="*{phone}" id="phone"/>
+  <div style="color:red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Error</div>
+  <br/>
+  <label for="email">E-mail: </label>
+  <input type="text" th:field="*{email}" id="email"/>
+  <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</div>
+  <br/>
+  <label for="passport">Паспорт: </label>
+  <input type="text" th:field="*{passport}" id="passport"/>
+  <div style="color:red" th:if="${#fields.hasErrors('passport')}" th:errors="*{passport}">Error</div>
+  <br/>
+  <input type="submit" value="Обновить"/>
+</form>
+
+</div>
+</main>
+
+</body>
+</html>

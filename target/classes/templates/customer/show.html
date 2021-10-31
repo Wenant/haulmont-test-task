@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Клиент</title>
+</head>
+<body>
+<div th:insert="~{fragment/top :: copy}"></div>
+
+<main class="container">
+  <div  class="bg-light p-1 rounded">
+
+
+<p><b>ID:</b> <span th:text="${customer.getId()}">VALUE</span></p>
+<p><b>ФИО:</b> <span  th:text="${customer.getName()}">VALUE</span></p>
+<p><b>Телефон:</b> <span  th:text="${customer.getPhone()}">VALUE</span></p>
+<p><b>E-mail:</b> <span  th:text="${customer.getEmail()}">VALUE</span></p>
+<p><b>Паспорт:</b> <span  th:text="${customer.getPassport()}">VALUE</span></p>
+
+<a th:href="@{/customer/{id}/edit(id=${customer.getId()})}" class="btn btn-outline-success" >Редактировать</a>
+
+<p><form th:method="DELETE" th:action="@{/customer/{id}(id=${customer.getId()})}" >
+  <input type="submit" value="Удалить"/>
+</form></p>
+
+  </div>
+</main>
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<div th:insert="~{fragment/top :: copy}"></div>
+
+<main class="container">
+    <h1>Новый кредит: </h1>
+  <div  class="bg-light p-1 rounded">
+
+    <form th:method="POST" th:action="@{/offer}" th:object="${offer}" >
+        <div>
+            <div class="col-md-4" >
+                <label for="creditSum">Выбор клиента: </label>
+                <select class="form-control" th:field="*{customer}"  id="customer1" >
+
+                    <option th:each="customer : ${customer}" th:text="${customer.name}" th:value="${customer.getId}"></option>
+                </select>
+            </div>
+        </div>
+
+        <div>
+            <div class="col-md-4" >
+                <label for="creditSum">Выбор лимита и процентной ставки: </label>
+                <select class="form-control" th:field="*{credit}"  id="credit">
+
+                    <option th:each="credit : ${credit}" th:text="${credit.creditLimit + ', ' +credit.creditPercent}" th:value="${credit.getId}"></option>
+                </select>
+            </div>
+        </div>
+
+        <div ></p>
+        <label for="creditSum">Сумма кредита: </label>
+        <input type="text" th:field="*{creditSum}" id="creditSum"/>
+        <div style="color:red" th:if="${#fields.hasErrors('creditSum')}" th:errors="*{creditSum}">Error</div>
+      <br/></p>
+        <label for="creditSum">Срок кредита:   </label>
+        <input type="text" name="x" placeholder="12 месяцев">
+      <br/>
+        </div></p>
+        <button class="w-50 btn btn-primary btn-lg" type="submit">Оформить кредит</button>
+    </form>
+  </div>
+</main>
+</body>
+</html>

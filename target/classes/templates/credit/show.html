@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Кредит</title>
+</head>
+<body>
+<div th:insert="~{fragment/top :: copy}"></div>
+<main class="container">
+  <div  class="bg-light p-1 rounded">
+
+
+
+
+<p><b>ID:</b> <span th:text="${credit.getId()}">VALUE</span></p>
+<p><b>Лимит:</b> <span  th:text="${credit.getCreditLimit()}">VALUE</span></p>
+<p><b>Процент:</b> <span  th:text="${credit.getCreditPercent()}">VALUE</span></p>
+
+<a th:href="@{/credit/{id}/edit(id=${credit.getId()})}" class="btn btn-outline-success" >Редактировать</a>
+
+
+    <p><form th:method="DELETE" th:action="@{/credit/{id}(id=${credit.getId()})}">
+  <input type="submit" value="Удалить"/>
+</form></p>
+
+  </div>
+</main>
+
+</body>
+</html>
